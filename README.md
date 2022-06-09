@@ -18,6 +18,6 @@ and add the dependency:
 
 ```
 dependencies {
-  implementation 'com.github.dolphinxx:opencc-android:1.1.4'
+  implementation 'com.github.dolphinxx:opencc_android:v1.1.4'
 }
 ```
