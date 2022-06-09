@@ -24,9 +24,22 @@ android {
         }
         
         externalNativeBuild {
-        cmake {
-            targets "libopencc"
+            cmake {
+                targets "libopencc"
+            }
         }
     }
+    
+    
+}
+
+publishing {
+    publications {
+        aar(MavenPublication) {
+            groupId = 'com.github.dolphinxx'
+            artifactId = 'opencc_android'
+            version = 'v1.1.4'
+            artifact("$buildDir/outputs/aar/opencc-native-library-release.aar")
+        }
     }
 }
