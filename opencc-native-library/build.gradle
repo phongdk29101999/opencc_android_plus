@@ -1,0 +1,32 @@
+rootProject.buildDir = './build'
+
+apply plugin: 'com.android.library'
+apply plugin: 'maven-publish'
+
+group = 'com.github.dolphinxx'
+version = '1.1.4'
+description = 'Native OpenCC library without JNI bindings'
+
+android {
+    compileSdkVersion 31
+    externalNativeBuild {
+        cmake {
+            path "CMakeLists.txt"
+        }
+    }
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 31
+
+        ndk {
+            abiFilters "x86", "x86_64", "armeabi-v7a", "arm64-v8a"
+        }
+        
+        externalNativeBuild {
+        cmake {
+            targets "libopencc"
+        }
+    }
+    }
+}

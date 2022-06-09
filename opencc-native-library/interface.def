@@ -1,0 +1,6 @@
+LIBRARY   opencc
+EXPORTS
+    convert
+    convertList
+    free_string
+    free_string_array
