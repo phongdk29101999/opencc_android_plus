@@ -26,6 +26,7 @@ android {
         externalNativeBuild {
             cmake {
                 targets "libopencc"
+                arguments "-DCMAKE_BUILD_TYPE=Release"
             }
         }
     }

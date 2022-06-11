@@ -6,7 +6,7 @@
 extern "C"
 {
 
-  const char* convert(const char* text, const char* configFile) {
+  const char* opencc_convert(const char* text, const char* configFile) {
     opencc::Config config;
     opencc::ConverterPtr converter = config.NewFromFile(configFile);
 
@@ -17,7 +17,7 @@ extern "C"
     return r;
   }
 
-  char** convertList(char** list, int size, const char* configFile) {
+  char** opencc_convertList(char** list, int size, const char* configFile) {
     opencc::Config config;
     opencc::ConverterPtr converter = config.NewFromFile(configFile);
     char** result = (char**)malloc(size * sizeof(char*));
@@ -30,12 +30,12 @@ extern "C"
     return result;
   }
 
-  void free_string(char *str) {
+  void opencc_free_string(char *str) {
       // Free native memory in C which was allocated in C.
       free(str);
   }
 
-  void free_string_array(char **array, int size) {
+  void opencc_free_string_array(char **array, int size) {
       for(int i = 0;i < size;i++) {
           free(array[i]);
       }
