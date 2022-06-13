@@ -17,7 +17,7 @@ extern "C"
     return r;
   }
 
-  char** opencc_convertList(char** list, int size, const char* configFile) {
+  char** opencc_convert_list(char** list, int size, const char* configFile) {
     opencc::Config config;
     opencc::ConverterPtr converter = config.NewFromFile(configFile);
     char** result = (char**)malloc(size * sizeof(char*));
