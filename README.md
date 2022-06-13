@@ -1,5 +1,7 @@
 # opencc_android
-OpenCC binary package for opencc_flutter_ffi plugin.
+[OpenCC](https://github.com/BYVoid/OpenCC) binary package for opencc_flutter_ffi plugin.
+
+Current version is `1.1.4`.
 
 [![](https://jitpack.io/v/dolphinxx/opencc_android.svg)](https://jitpack.io/#dolphinxx/opencc_android)
 
@@ -20,6 +22,6 @@ and add the dependency:
 
 ```
 dependencies {
-  implementation 'com.github.dolphinxx:opencc_android:1.1.4'
+  implementation 'com.github.dolphinxx:opencc_android:0.0.1'
 }
 ```
