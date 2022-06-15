@@ -1,14 +1,31 @@
-#include <malloc.h>
 #include <cstring>
+#include <map>
+#include <cstdlib>
 #include "OpenCC/src/Converter.hpp"
 #include "OpenCC/src/Config.hpp"
 
+struct cmpByString {
+  bool operator()(const char* a, const char* b) const {
+    return strcmp(a, b) < 0;
+  }
+};
+
+static std::map<const char*, opencc::ConverterPtr, cmpByString> converters;
+
 extern "C"
 {
-
-  const char* opencc_convert(const char* text, const char* configFile) {
+  void opencc_init_converter(const char* type, const char* configFile) {
     opencc::Config config;
     opencc::ConverterPtr converter = config.NewFromFile(configFile);
+    char* t = strcpy(new char[strlen(type)], type);
+    converters[t] = converter;
+  }
+
+  char* opencc_convert(const char* text, const char* type) {
+    opencc::ConverterPtr converter = converters[type];
+    if(converter == nullptr) {
+      return nullptr;
+    }
 
     std::string s = converter->Convert(text);
 
@@ -17,21 +34,21 @@ extern "C"
     return r;
   }
 
-  char** opencc_convert_list(char** list, int size, const char* configFile) {
-    opencc::Config config;
-    opencc::ConverterPtr converter = config.NewFromFile(configFile);
+  char** opencc_convert_list(char** list, int size, const char* type) {
+    opencc::ConverterPtr converter = converters[type];
+    if(converter == nullptr) {
+      return nullptr;
+    }
     char** result = (char**)malloc(size * sizeof(char*));
     for(int i = 0;i < size;i++) {
       std::string s = converter->Convert((char*)list[i]);
       result[i] = (char*) malloc(s.length());
       strcpy(result[i], s.c_str());
-//      result[i][s.length()] = '\0';
     }
     return result;
   }
 
   void opencc_free_string(char *str) {
-      // Free native memory in C which was allocated in C.
       free(str);
   }
 
@@ -40,5 +57,9 @@ extern "C"
           free(array[i]);
       }
       free(array);
+  }
+
+  int opencc_dummy_method_to_enforce_bundling() {
+    return 1;
   }
 }
