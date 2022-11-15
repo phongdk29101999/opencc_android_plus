@@ -22,6 +22,6 @@ and add the dependency:
 
 ```
 dependencies {
-  implementation 'com.github.dolphinxx:opencc_android:0.0.1'
+  implementation 'com.github.dolphinxx:opencc_android:0.0.3'
 }
 ```
