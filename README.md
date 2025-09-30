@@ -3,8 +3,6 @@
 
 Current version is `1.1.4`.
 
-[![](https://jitpack.io/v/dolphinxx/opencc_android.svg)](https://jitpack.io/#dolphinxx/opencc_android)
-
 It does not contain JNI bindings or any other code, just the native libraries for dlopen.
 
 To depend on this, add jitpack in your root build.gradle at the end of repositories:
@@ -22,6 +20,6 @@ and add the dependency:
 
 ```
 dependencies {
-  implementation 'com.github.dolphinxx:opencc_android:0.0.3'
+  implementation 'com.github.phongdk29101999:opencc_android_plus:1.0.0'
 }
 ```

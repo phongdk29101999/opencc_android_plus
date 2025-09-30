@@ -14,5 +14,5 @@ dependencyResolutionManagement {
 	}
 }
 
-include(":opencc-native-library")
-rootProject.name = "opencc_android"
+include(":opencc-native-library-plus")
+rootProject.name = "opencc_android_plus"

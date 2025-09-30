@@ -1,4 +1,4 @@
 
-[submodule "opencc-native-library/OpenCC"]
-	path = opencc-native-library/OpenCC
+[submodule "opencc-native-library-plus/OpenCC"]
+	path = opencc-native-library-plus/OpenCC
 	url = https://github.com/BYVoid/OpenCC.git
